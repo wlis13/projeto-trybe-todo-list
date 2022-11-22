@@ -1,5 +1,6 @@
 FROM node:14-alpine
-COPY ./docker/todo-app/back-end/ /home/node/app
-WORKDIR /node_modules/tar/gz
-EXPOSE 3001
-ENTRYPOINT [ "npm", "start" ]
+WORKDIR /app
+ADD node_modules.tar.gz .
+COPY ./docker/todo-app/front-end/ /home/node/app
+EXPOSE 3000
+ENTRYPOINT ["npm", "start"]
